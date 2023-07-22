@@ -43,19 +43,74 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            backgroundColor: Colors.green,
+            expandedHeight: 200.0,
+            elevation: 1,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Container(
+                color: Colors.deepOrange,
+                child: const Center(
+                  child: Icon(
+                    Icons.favorite,
+                    size: 70,
+                    color: Colors.yellow,
+                  ),
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            title: const Text('first app bar'),
+          ),
+          SliverGrid.count(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10.0,
+            crossAxisSpacing: 10.0,
+            childAspectRatio: 1,
+            children: [
+              Card(
+                color: Colors.blue[200],
+                child: Container(),
+              ),
+              Card(
+                color: Colors.blue[400],
+                child: Container(),
+              ),
+              Card(
+                color: Colors.blue[600],
+                child: Container(),
+              ),
+              Card(
+                color: Colors.blue[1000],
+                child: Container(),
+              ),
+            ],
+          ),
+          const SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+          SliverAppBar(
+            elevation: 5,
+            pinned: true,
+            backgroundColor: Colors.pink,
+            expandedHeight: 250.0,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Container(
+                color: Colors.amber,
+                child: const Center(
+                  child: Icon(
+                    Icons.run_circle,
+                    size: 60,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
-          ],
-        ),
+            title: const Text(
+              'Second Sliver AppBar',
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
