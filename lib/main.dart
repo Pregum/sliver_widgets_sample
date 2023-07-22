@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,13 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final List _gridItems = List.generate(90, (index) => 'item $index');
 
   @override
   Widget build(BuildContext context) {
@@ -110,12 +106,29 @@ class _MyHomePageState extends State<MyHomePage> {
               'Second Sliver AppBar',
             ),
           ),
+          SliverGrid(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 1.0,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              ((context, index) {
+                return Card(
+                  color: Colors.amber[Random().nextInt(9) * 100],
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      _gridItems[index],
+                    ),
+                  ),
+                );
+              }),
+              childCount: _gridItems.length,
+            ),
+          ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
