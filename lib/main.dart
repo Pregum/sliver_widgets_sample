@@ -64,16 +64,16 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('go to SliverAppBarSample'),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SliverAppBarOnTriggerSample(),
-                  ),
-                );
-              },
-              child: const Text('go to SliverListSample'),
-            )
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.of(context).push(
+            //       MaterialPageRoute(
+            //         builder: (context) => const SliverAppBarOnTriggerSample(),
+            //       ),
+            //     );
+            //   },
+            //   child: const Text('go to SliverListSample'),
+            // )
           ],
         ),
       ),
