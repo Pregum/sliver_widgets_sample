@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:sliver_widgets_sample/simple_sliver_app_bar_sample.dart';
 import 'package:sliver_widgets_sample/sliver_app_bar_on_trigger_sample.dart';
 import 'package:sliver_widgets_sample/sliver_app_bar_sample.dart';
 
@@ -43,6 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SimpleSliverAppBarSample()),
+                );
+              },
+              child: const Text('go to SampleSliverAppBarSample'),
+            ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
