@@ -21,6 +21,8 @@ class _SliverAppBarSampleState extends State<SliverAppBarSample> {
   var _stretch = true;
   var _snap = true;
   var _pinned = true;
+  var _collapsedHeight = kToolbarHeight;
+  var _expandedHeight = 200.0;
 
   @override
   void initState() {
@@ -52,11 +54,12 @@ class _SliverAppBarSampleState extends State<SliverAppBarSample> {
                 onPressed: () {},
               )
             ],
+            collapsedHeight: _collapsedHeight,
             pinned: _pinned,
             floating: _floating,
             snap: _snap,
             backgroundColor: Colors.green,
-            expandedHeight: 200.0,
+            expandedHeight: _expandedHeight,
             elevation: 1,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
@@ -181,6 +184,48 @@ class _SliverAppBarSampleState extends State<SliverAppBarSample> {
                           _visibleLeading = value;
                         });
                       }),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('expandedHeight'),
+                  SizedBox(
+                    height: 50,
+                    child: Slider(
+                      label: _expandedHeight.toStringAsFixed(0),
+                      divisions: 10,
+                      value: _expandedHeight,
+                      min: kToolbarHeight,
+                      max: MediaQuery.of(context).size.height,
+                      onChanged: ((value) {
+                        setState(() {
+                          _expandedHeight = value;
+                        });
+                      }),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('collapsedHeight'),
+                  SizedBox(
+                    height: 50,
+                    child: Slider(
+                      value: _collapsedHeight,
+                      divisions: 10,
+                      label: _collapsedHeight.toStringAsFixed(0),
+                      min: kToolbarHeight,
+                      max: MediaQuery.of(context).size.height,
+                      onChanged: ((value) {
+                        setState(() {
+                          _collapsedHeight = value;
+                        });
+                      }),
+                    ),
+                  ),
                 ],
               ),
               Row(
